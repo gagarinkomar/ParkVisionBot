@@ -1,0 +1,17 @@
+# Example Ultralytics dataset config for fine-tuning.
+# After you label images, create:
+#   data/dataset/images/train
+#   data/dataset/images/val
+#   data/dataset/labels/train
+#   data/dataset/labels/val
+# Labels format: YOLO txt (class x_center y_center width height) in relative coords.
+
+path: /app/data/dataset
+train: images/train
+val: images/val
+
+names:
+  0: car
+  1: motorcycle
+  2: bus
+  3: truck

@@ -1,0 +1,13 @@
+train: ../train/images
+val: ../valid/images
+test: ../test/images
+
+nc: 1
+names: ['car']
+
+roboflow:
+  workspace: ivan-e9gs3
+  project: my-first-project-ovxdj
+  version: 1
+  license: CC BY 4.0
+  url: https://universe.roboflow.com/ivan-e9gs3/my-first-project-ovxdj/dataset/1

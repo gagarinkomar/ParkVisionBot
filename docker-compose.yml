@@ -1,0 +1,28 @@
+services:
+  bot:
+    build:
+      context: .
+      args:
+        UV_SYNC_EXTRAS: "--extra headless"
+    env_file:
+      - env
+    volumes:
+      - ./data:/app/data
+      - ./video.mp4:/app/video.mp4:ro
+    restart: unless-stopped
+
+  bot_ultra:
+    build:
+      context: .
+      args:
+        UV_SYNC_EXTRAS: "--extra headless --extra train"
+    env_file:
+      - env
+    environment:
+      DETECTOR_BACKEND: ultralytics
+      # use your trained weights inside container:
+      ULTRALYTICS_MODEL: /app/data/runs/detect/weights/best.pt
+    volumes:
+      - ./data:/app/data
+      - ./video.mp4:/app/video.mp4:ro
+    restart: unless-stopped

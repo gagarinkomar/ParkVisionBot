@@ -1,0 +1,44 @@
+[project]
+name = "parking-occupancy-bot"
+version = "0.1.0"
+description = "Simple CV project: parking spot occupancy detection + Telegram bot demo"
+requires-python = ">=3.11"
+
+dependencies = [
+  "numpy>=1.26",
+  "pillow>=10.3",
+  "pyyaml>=6.0",
+  "python-telegram-bot>=21.0",
+  "requests>=2.32.3",
+]
+
+[project.optional-dependencies]
+headless = [
+  "opencv-python-headless>=4.10",
+]
+train = [
+  "ultralytics>=8.3.0",
+]
+
+[project.scripts]
+parking-bot = "parking_bot.bot:main"
+parking-demo = "parking_bot.cli:main"
+parking-demo-video = "parking_bot.tools.demo_video:main"
+parking-extract-frame = "parking_bot.tools.extract_frame:main"
+parking-extract-dataset = "parking_bot.tools.extract_dataset:main"
+parking-train-yolo = "parking_bot.tools.train_yolo:main"
+parking-download-models = "parking_bot.tools.download_models:main"
+parking-web-mark-spots = "parking_bot.tools.web_mark_spots:main"
+
+[tool.uv]
+package = true
+
+[tool.setuptools]
+package-dir = {"" = "src"}
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[build-system]
+requires = ["setuptools>=69"]
+build-backend = "setuptools.build_meta"
